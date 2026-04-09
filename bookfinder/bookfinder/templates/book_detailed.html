@@ -1,0 +1,92 @@
+{% extends "website/base.html" %} {% block body %}
+<div
+  style="
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  "
+>
+  <!-- MAIN FLEX CONTAINER -->
+  <div style="display: flex; gap: 40px; align-items: flex-start">
+    <!-- LEFT: IMAGE + THUMBNAILS -->
+    <div style="flex: 1">
+      {% if book.img %}
+      <img
+        src="{{ book.img.url }}"
+        alt="{{ book.name }}"
+        style="
+          width: 100%;
+          max-width: 500px;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        "
+      />
+      {% else %}
+      <img
+        src="https://via.placeholder.com/500x600"
+        style="width: 100%; max-width: 500px; border-radius: 10px"
+      />
+      {% endif %}
+    </div>
+
+    <!-- RIGHT: DETAILS -->
+    <div style="flex: 2">
+      <!-- PRODUCT TITLE -->
+      <h1 style="color: #222; font-size: 28px; margin-bottom: 8px">
+        {{ book.name }}
+      </h1>
+
+      <!-- AUTHOR -->
+      <p style="color: #555; font-size: 15px; margin-bottom: 15px">
+        by <strong>{{ book.author }}</strong>
+      </p>
+
+      <!-- PRICE -->
+      <div
+        style="
+          font-size: 26px;
+          color: #d12424;
+          font-weight: bold;
+          margin-bottom: 20px;
+        "
+      >
+        ${{ book.price }}
+      </div>
+
+
+      <!-- BACK BUTTON -->
+      <a
+        href="{% url 'homepage' %}"
+        style="
+          display: inline-block;
+          margin-top: 5px;
+          color: #007bff;
+          font-size: 15px;
+          text-decoration: none;
+        "
+      >
+        ← Back to Products
+      </a>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee" />
+  <div>
+    <h3 style="font-size: 20px; margin-bottom: 12px; color: #333">
+      Product Description
+    </h3>
+    <p style="font-size: 15px; line-height: 1.7; color: #444">
+      {{ book.description }}
+    </p>
+    <p style="font-size: 15px; line-height: 1.7; color: #444">
+      ISBN: {{ book.isbn.isbn_number }}
+    </p>
+    <p style="font-size: 15px; line-height: 1.7; color: #444">
+      Pages: {{ book.isbn.pages }}
+    </p>
+       
+  </div>
+</div>
+{% endblock body %}
