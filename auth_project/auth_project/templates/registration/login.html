@@ -1,1 +1,37 @@
 {% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+
+  <div class="card shadow border-0" style="width: 100%; max-width: 420px;">
+
+    <div class="card-body p-4">
+
+      <h4 class="text-center font-weight-bold mb-4">Login</h4>
+
+      <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary btn-block font-weight-bold">
+          Sign in
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <small>
+          Don't have account?
+          <a href="{% url 'register' %}">Register</a>
+        </small>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
