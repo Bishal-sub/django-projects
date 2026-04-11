@@ -179,6 +179,7 @@ Example:
 
 ---
 
+<<<<<<< HEAD
 ## ⭐ Support
 
 If you find this repository useful:
@@ -192,3 +193,6 @@ If you find this repository useful:
 ## 📜 License
 
 This project is licensed under the MIT License.
+=======
+
+>>>>>>> 9f3a371437a732c2626f877f48f27fbbb8fb8c14
