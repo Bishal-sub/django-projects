@@ -179,16 +179,4 @@ Example:
 
 ---
 
-## ⭐ Support
 
-If you find this repository useful:
-
-- ⭐ Star the repo  
-- 🍴 Fork it  
-- 🤝 Contribute or suggest improvements  
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
