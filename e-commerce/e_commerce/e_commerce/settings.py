@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
@@ -120,4 +120,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-
+LOGIN_URL = 'login'
+LOGIN_URL_REDIRECT = 'home'
+LOGOUT_URL_REDIRECT = 'login'
