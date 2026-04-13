@@ -132,17 +132,7 @@ http://127.0.0.1:8000/
 
 ---
 
-## 📸 Screenshots (Optional)
 
-Add screenshots of your projects here to improve presentation.
-
-Example:
-```
-/screenshots/book-finder.png
-/screenshots/ecommerce.png
-```
-
----
 
 ## 🎯 Goals of This Repository
 
