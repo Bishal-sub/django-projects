@@ -169,20 +169,3 @@ http://127.0.0.1:8000/
 
 ---
 
-<<<<<<< HEAD
-## ⭐ Support
-
-If you find this repository useful:
-
-- ⭐ Star the repo  
-- 🍴 Fork it  
-- 🤝 Contribute or suggest improvements  
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-=======
-
->>>>>>> 9f3a371437a732c2626f877f48f27fbbb8fb8c14
