@@ -47,10 +47,25 @@
                 Categories
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Electronics</a></li>
-                <li><a class="dropdown-item" href="#">Fashion</a></li>
-                <li><a class="dropdown-item" href="#">Home & Living</a></li>
-                <li><a class="dropdown-item" href="#">Beauty</a></li>
+                <li>
+                  <a class="dropdown-item" href="?category=electronics"
+                    >Electronics</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="?category=fashion">Fashion</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="?category=gay">Gay</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="?category=Home and Living"
+                    >Home & Living</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="?category=beauty">Beauty</a>
+                </li>
               </ul>
             </li>
 
@@ -60,11 +75,13 @@
           </ul>
 
           <!-- Search bar -->
-          <form class="d-flex me-3" role="search">
+          <form class="d-flex me-3" role="search" method="get">
             <input
               class="form-control me-2"
               type="search"
+              name="q"
               placeholder="Search products..."
+              value="{{ request.Get.q }}"
             />
             <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
@@ -93,7 +110,6 @@
                 Account
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-
                 {% if user.is_authenticated %}
                 <a class="dropdown-item" href="{% url 'profile' %}">profile</a>
                 <li>
@@ -103,9 +119,7 @@
                   </form>
                 </li>
                 {% else %}
-                <li>
-                  
-                </li>
+                <li></li>
                 <li>
                   <a class="dropdown-item" href="{% url 'login' %}">Login</a>
                 </li>
