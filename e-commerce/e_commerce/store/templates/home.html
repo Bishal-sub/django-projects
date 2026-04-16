@@ -1,50 +1,53 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
-<div class="container py-4">
-  <div class="row g-3">
+{% block title %}Home | E-commerce{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h4 class="fw-bold mb-3">Products</h4>
+
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
     {% for product in products %}
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="card h-100 shadow-sm">
-        <!-- IMAGE -->
-        {% with product.images.first as image %} {% if image %}
-        <img
-          src="{{ image.img.url }}"
-          class="card-img-top"
-          style="height: 200px; object-fit: contain"
-        />
-        {% else %}
-        <div
-          class="d-flex justify-content-center align-items-center"
-          style="height: 200px"
-        >
-          No Image
-        </div>
-        {% endif %} {% endwith %}
-
-        <!-- BODY -->
-        <div class="card-body d-flex flex-column">
-          <h6 class="card-title">{{ product.productname }}</h6>
-
-          <p class="card-text text-muted small">
-            {{ product.description|truncatechars:60 }}
-          </p>
-
-          <h5 class="text-danger fw-bold">₹ {{ product.price }}</h5>
-
-          {% if user.is_authenticated %}
-          <button class="btn btn-warning mt-auto w-100">Add to Cart</button>
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 hover-scale">
+        <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
+          {% with product.images.first as image %}
+          {% if image %}
+          <img src="{{ image.img.url }}" class="card-img-top p-3" style="height:180px; object-fit:contain;">
           {% else %}
-          <a class="btn btn-warning mt-auto w-100" href="{% url 'login' %}">
-            Add to Cart
-          </a>
+          <div class="d-flex justify-content-center align-items-center bg-light" style="height:180px;">
+            <span class="text-muted">No Image</span>
+          </div>
+          {% endif %}
+          {% endwith %}
+
+          <div class="card-body p-2">
+            <h6 class="card-title fw-bold">{{ product.productname|truncatechars:25 }}</h6>
+            <p class="text-danger fw-bold mb-1">₹ {{ product.price }}</p>
+            <p class="text-muted small mb-0">{{ product.description|truncatechars:40 }}</p>
+          </div>
+        </a>
+        <div class="card-footer bg-white p-2 border-0">
+          {% if user.is_authenticated %}
+          <button class="btn btn-warning btn-sm w-100">Add to Cart</button>
+          {% else %}
+          <a href="{% url 'login' %}" class="btn btn-warning btn-sm w-100">Add to Cart</a>
           {% endif %}
         </div>
       </div>
     </div>
-    {% empty %}
-    <p>No products found</p>
     {% endfor %}
   </div>
+
+  {% if not products %}
+    <p class="text-center text-muted mt-5">No products found.</p>
+  {% endif %}
 </div>
 
+<style>
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+</style>
 {% endblock %}

@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-qg^czd#bb&9)s4gy9v_l_(=g#%!c2lc1$75qp*1js8-q@f8ibg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = ['bishal.localtunnel.me', 'localhost', '127.0.0.1']
 ALLOWED_HOSTS = []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -127,6 +128,7 @@ LOGOUT_REDIRECT_URL = 'login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+CSRF_COOKIE_SECURE = True        # Ensure CSRF token is sent only over HTTPS
 
 
 

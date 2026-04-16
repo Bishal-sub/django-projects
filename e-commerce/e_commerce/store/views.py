@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.db.models import Q
 from .models import Product
 from django.contrib.auth.decorators import login_required
@@ -21,3 +21,8 @@ def home(request):
         )
     return render(request, 'home.html', {'products': products})
 
+
+
+def product_details(request, id):
+    product = get_object_or_404(Product, id = id)
+    return render(request, 'product_detailed.html', {'product': product})

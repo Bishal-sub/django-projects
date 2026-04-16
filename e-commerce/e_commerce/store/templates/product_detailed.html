@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Left: Product Images -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            {% if product.images.all %}
+                {% if product.images.count > 1 %}
+                    <!-- Thumbnails + Main Image -->
+                    <div class="mb-3">
+                        <img id="mainImage" src="{{ product.images.first.img.url }}" class="img-fluid rounded shadow-sm" style="height:450px; object-fit:contain;">
+                    </div>
+                    <div class="d-flex gap-2 overflow-auto">
+                        {% for image in product.images.all %}
+                            <img src="{{ image.img.url }}" class="img-thumbnail" style="height:100px; cursor:pointer;" onclick="document.getElementById('mainImage').src=this.src;">
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <img src="{{ product.images.first.img.url }}" class="img-fluid rounded shadow-sm" style="height:450px; object-fit:contain;">
+                {% endif %}
+            {% else %}
+                <div class="d-flex justify-content-center align-items-center bg-light rounded shadow-sm" style="height:450px;">
+                    <span class="text-muted">No Image Available</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Right: Product Details -->
+        <div class="col-lg-6">
+            <h1 class="fw-bold mb-3">{{ product.productname }}</h1>
+            <p class="fs-6 text-muted mb-4">{{ product.description }}</p>
+            <h3 class="text-danger fw-bold mb-4">₹ {{ product.price }}</h3>
+
+            <div class="d-grid gap-3 mb-4">
+                {% if user.is_authenticated %}
+                    <button class="btn btn-warning btn-lg">Add to Cart</button>
+                    <button class="btn btn-danger btn-lg">Buy Now</button>
+                {% else %}
+                    <a class="btn btn-warning btn-lg" href="{% url 'login' %}">Add to Cart</a>
+                {% endif %}
+            </div>
+
+            <a href="{% url 'home' %}" class="text-decoration-none text-muted">&larr; Back to Products</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
