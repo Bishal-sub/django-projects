@@ -127,3 +127,4 @@ def update_quantity(request, item_id):
     item.save()
 
     return redirect('cart_view')
+
