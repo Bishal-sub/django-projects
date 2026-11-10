@@ -1,0 +1,75 @@
+{% extends "website/base.html" %} {% block body %}
+
+<div style="max-width: 500px; margin: 40px auto; padding: 20px">
+  <div
+    style="
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    "
+  >
+    <h2
+      style="
+        margin: 0 0 15px;
+        text-align: center;
+        color: #333;
+        font-weight: 600;
+      "
+    >
+      🔍 Find Store
+    </h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <div style="margin-bottom: 15px">{{ form.as_p }}</div>
+
+      <button
+        type="submit"
+        style="
+          width: 100%;
+          padding: 12px;
+          border: none;
+          border-radius: 8px;
+          background: linear-gradient(90deg, #4facfe, #00f2fe);
+          color: white;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: 0.2s;
+        "
+      >
+        Search Store
+      </button>
+    </form>
+  </div>
+
+  {% if store %}
+  <div style="margin-top: 30px">
+    <h3 style="margin-bottom: 15px; color: #333">📚 Available Stores</h3>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      {% for s in store %}
+      <div
+        style="
+          background: #fff;
+          padding: 15px;
+          border-radius: 10px;
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+          transition: 0.2s;
+        "
+        onmouseover="this.style.transform = 'translateY(-2px)'"
+        onmouseout="this.style.transform = 'translateY(0)'"
+      >
+        <div style="font-weight: 600; color: #333">{{ s.name }}</div>
+
+        <div style="font-size: 14px; color: #777">📍 {{ s.location }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock body %}
